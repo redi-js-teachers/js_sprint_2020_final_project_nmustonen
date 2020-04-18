@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 5</title>
+    <link rel="stylesheet" href="stylesheet.css" type="text/css">
+</head>
+
+<body>
+    <button id="strangeButton" class=""> Strange Button </button>
+    
+<script>
+let strangeButtonCmp = document.getElementById("strangeButton");
+const initialLabel = "Strange button";
+
+function clickHandler(event) {
+	console.log('Hey, you just pressed strange button');
+}
+
+function mouseOverHandler(event){
+    console.log("WOW Amazing");
+    strangeButtonCmp.classList.add("strangeButtonBlue");
+}
+
+function mouseLeaveHandler(event){
+console.log("Mouse is gone");
+strangeButtonCmp.classList.remove("strangeButtonBlue");
+}
+
+function doubleClickHandler(event){
+console.log("changing the text as double-clicked");
+strangeButtonCmp.classList.add("strangeButtonRed");
+}
+
+    strangeButtonCmp.addEventListener("click",clickHandler);
+    strangeButtonCmp.addEventListener("mouseover",mouseOverHandler);
+    strangeButtonCmp.addEventListener("mouseleave",mouseLeaveHandler);
+    strangeButtonCmp.addEventListener("dblclick",doubleClickHandler);
+
+
+
+
+</script>
+
+
+</body>
+</html>
