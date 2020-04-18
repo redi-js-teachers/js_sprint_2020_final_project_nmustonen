@@ -1,0 +1,232 @@
+
+
+<html>
+    <head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title> lesson4 - calculator</title>
+  <link rel="stylesheet" href="stylesheet.css" type="text/css">
+  </head>
+
+  <body>
+
+      <div>
+    <p>Homework - Calculator with numbers</p> <br>
+    <button type="addNumber">ADD</button><br>
+    <input id="Number">
+   <br>
+   
+    <script>
+        const numberlListEl = document.getElementById('numberList');
+        const numberInputEl = document.getElementById('numberInput');
+        const numberAddBtn = document.getElementById('addNumber');
+
+ 
+    function addNumber() {
+        const number = numberInputEl.value;
+        const numberEl = document.createElement('li');
+        numberEl.textContent = number;
+        numberListEl.appendChild(numberEl);
+        numberInputEl.value = '';
+}
+
+numberAddBtn.addEventListener('click', addNumber);
+
+}
+      </script>
+ 
+</div>
+<br>
+<hr>
+
+// lesson 4 - slide 4 - enter name // 
+
+
+    <input id ="nameInput" placeholder="enter your name">
+    <p id="name">Name:</p>
+    
+    <input id="Number"> <br>
+    <button type="addNumber">ADD</button>
+</div> 
+    
+<script>
+const nameInputEl = document.getElementById('nameInput');
+const nameEl = document.getElementById('name');
+
+nameInputEl.addEventListener('change', function(event) {
+    nameEl.textContent = 'Name: ' + event.target.value;
+});
+   
+</script>
+
+<br>
+<br>
+<hr>
+
+// lesson 4 - slide 6 - Add calculator ( number 1+ number1 = 11) // 
+<div class= "input_group">
+    <input id ="addOneInput" placeholder="number">
+    <p> + </p>
+    <input id="addTwoInput" placeholder="number">
+    <p> = </p>
+    <p id="addAnswer"></p>
+</div> 
+
+<script>
+const inputOneEl = document.getElementById('addOneInput');
+const inputTwoEl = document.getElementById('addTwoInput');
+const answerEl = document.getElementById('addAnswer');
+
+function handleInputChange() {
+    const answer = inputOneEl.value + inputTwoEl.value;
+    answerEl.textContent = answer;
+}
+inputOneEl.addEventListener('change', handleInputChange);
+inputTwoEl.addEventListener('change', handleInputChange);
+       
+</script>       
+
+
+<div>
+<hr>
+
+
+    <h3> lesson 4 - slide 8 - Add calculator V2 (not working but done as per instruction) ( number 1+ number1 = 2) </h3>
+    <div>
+        <input id ="addOneInputv2" placeholder="number">
+    </div>
+        <p> + </p>
+    <div>
+        <input id="addTwoInputv2" placeholder="number">
+    </div>
+    <p> = </p>
+        <p id="addAnswerv2"></p>
+    </div> 
+    
+    <script>
+const inputOneEl = document.getElementById('addOneInputv2');
+const inputTwoEl = document.getElementById('addTwoInputv2');
+const answerEl = document.getElementById('addAnswerv2');
+
+function handleInputChange() {
+    const answer = parseFloat(inputOneEl.value) + parseFloat(inputTwoEl.value);
+    answerEl.textContent = answer;
+}
+inputOneEl.addEventListener('change', handleInputChange);
+inputTwoEl.addEventListener('change', handleInputChange);
+                                  
+    </script>       
+    
+ <br>
+ <hr>
+ 
+
+ // lesson 4 - slide 9 - Global scope VS local scope // 
+ 
+ <div>
+    <input id ="addOneInputv3" placeholder="number">
+</div>
+<p>total: 
+    <span id="addAnswerv3"></span>
+</p>
+<button type="button" id="updateAnswerv3">update total</button>
+    <br>
+ <script>
+let sum = 0; // global scope
+
+function handleInputChange(event) {
+    const num = parseFloat(event.target.value); // local scope
+    sum = sum + num;
+}
+
+inputOneEl.addEventListener('change', handleInputChange);
+
+function updateAnswer() {
+    answerEl.textContent = sum;
+    console.log('sum:', sum);
+    console.log('num:', num); // will error because there is no num in this scope
+}
+
+updateBtnEl.addEventListener('click', updateAnswer);
+                    
+</script>
+
+    <div>
+
+ <br>
+ <hr>       
+ <!--// lesson 4 - slide 10 - Animal list example --->
+ <h3>animal list example</h3>
+ <ul id="animalList">
+<li>dog</li>
+ </ul>
+ <div>
+    <input id ="animalInput" placeholder="animal">
+<button type="button" id="addAnimal">add animal</button>
+    <br>
+</div>
+ <script>
+ const animalListEl = document.getElementById('animalList');
+ const animalInputEl = document.getElementById('animalInput');
+ const animalAddBtn = document.getElementById('addAnimal');
+ 
+ function addAnimal() {
+     const animal = animalInputEl.value;
+     const animalEl = document.createElement('li');
+     animalEl.textContent = animal;
+     animalListEl.appendChild(animalEl);
+     animalInputEl.value = '';
+ }
+ 
+ animalAddBtn.addEventListener('click', addAnimal);
+                     
+</script>
+
+ <hr>
+    <h3>HOMEWORK - Calculator</h3>
+    <ul id="NumberList">
+   <li></li>
+    </ul>
+    <div>
+       <input id ="numberInput" placeholder="number"><br>
+        <button type="button" id="addNumber">ADD NUMBER</button>
+    </div>
+
+    <script>
+const numberListEl = document.getElementById('numberList');
+const numberInputEl = document.getElementById('numberInput');
+const numberAddBtn = document.getElementById('addNumber');
+
+function addNumber() {
+    const number = NumberInputEl.value;
+    const numberEl = document.createElement('li');
+    numberEl.textContent = number;
+    numberListEl.appendChild(numberEl);
+    numberInputEl.value = '';
+}
+
+NumberAddBtn.addEventListener('click', addNumber);
+
+</script>
+
+
+
+<hr>
+        <h3>test -this works</h3>
+        <script language="javascript">
+                function addNumbers()
+                {
+                        var val1 = parseInt(document.getElementById("value1").value);
+                        var val2 = parseInt(document.getElementById("value2").value);
+                        var ansD = document.getElementById("answer");
+                        ansD.value = val1 + val2;
+                }
+        </script>
+  
+        value1 = <input type="text" id="value1" name="value1" value=""/>
+        value2 = <input type="text" id="value2" name="value2" value=""/>
+        <input type="button" name="Sumbit" value="Click here" onclick="javascript:addNumbers()"/>
+        Answer = <input type="text" id="answer" name="answer" value=""/>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<html><head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>homework lesson3</title>
+  <meta name="author" content="Niina Mustonen">
+  
+  
+  <link rel="stylesheet" href="stylesheet.css" type="text/css">
+  </head>
+  <body>
+    <p>How are you?</p>
+    <button id="goodButton">Good 👍</button><button id="awesomeButton">Awesome 😊</button><button id="burgerButton">I am a burger🍔</button>
+    <p id="answer"></p>
+      <script>
+       let goodButtonCmp = document.getElementById("goodButton");
+       let awesomeButtonCmp = document.getElementById("awesomeButton");
+       let burgerButtonCmp = document.getElementById("burgerButton");
+       let answerCmp = document.getElementById("answer");
+  
+       function goodButtonClick(event) {
+          answerCmp.textContent = "That's great  😊";
+          console.log(" I feel really good today 😊");
+          
+       }
+  
+        function awesomeButtonClick(event) {
+          answerCmp.textContent = "Oh that's A-W-E-S-O-M-E ";
+          console.log(" I feel AWESOME ");
+       }
+
+       function burgerButtonClick(event) {
+           answerCmp.textContent = " Got any fries?";
+           console.log(" damn, I am hungry ");
+           alert('You are Yummy! 🍔 ');
+       }
+  
+       goodButtonCmp.addEventListener("click", goodButtonClick);
+       awesomeButtonCmp.addEventListener("click", awesomeButtonClick);
+       burgerButtonCmp.addEventListener("click", burgerButtonClick);
+      </script>
+
+
+
+      <header>
+          <nav>
+              <a href="">Home</a>
+              <a href="">About Me</a>
+              <a href="" class="active">Base Page</a>
+          </nav>
+      </header>
+      <div class="main">
+
+          <section class="card">
+              <h2 class="card__title">Photography</h2>
+              <div class="card__imgWrapper">
+                  <img class="card__img" src="leafbokehmobile.jpg">
+              </div>
+              <div class="card__description">
+                  What I miss: Going out to the city and doing random Photography.
+                  For directions, please see here:
+          <a href="https://goo.gl/maps/emTrK6vXG8LdxZKs8">location</a>
+              </div>
+              
+          </section>
+
+          <section class="card">
+              <h2 class="card__title">Mountains</h2>
+              <div class="card__imgWrapper">
+                  <img class="card__img" src="cowpeek.jpg">
+              </div>
+              <div class="card__description">
+                  What I miss: Going to the mountains and pet some cute cows.
+                  For directions, please see here:
+          <a href="https://goo.gl/maps/Qy9hpoas9Mgp7K2h6">location</a>
+              </div>
+              
+          </section>
+
+          <section class="card">
+              <h2 class="card__title">Traveling</h2>
+              <div class="card__imgWrapper">
+                  <img class="card__img" src="lighthousemobile.jpg">
+              </div>
+              <div class="card__description">
+          What I miss: Traveling and exploring new places and other countries
+          <br>
+          For directions, please see here:
+          <a href="https://goo.gl/maps/MTsbTcY5qFqFLw5XA">location</a>
+	        </div>
+             
+          </section>
+
+      </div>
+      <footer>
+          <p>Made by Niina Mustonen for REDI: Frontend Development 2</p>
+      </footer>
+  
+
+
+</body></html>
