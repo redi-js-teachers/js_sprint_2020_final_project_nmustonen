@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylephotocarusel.css">
+</head>
+<body>
+
+    <base href="gapahut.jpg">
+    <div id="carousel">
+      <figure id="spinner">
+        <img src="gapahut.jpg" alt>
+        <img src="horses.jpg" alt>
+        <img src="hikingpeak.jpg" alt>
+        <img src="sleepingcow.jpg" alt>
+        <img src="eibseecabin.jpg" alt>
+        <img src="parkreflection.jpg" alt>
+        <img src="helsinkichurch.jpg" alt>
+        <img src="mondayhog.jpg" alt>
+      </figure>
+    </div>
+    <span style="float:left" class="ss-icon" onclick="galleryspin('-')">&lt;</span>
+    <span style="float:right" class="ss-icon" onclick="galleryspin('')">&gt;</span>
+
+    <script>
+
+var angle = 0;
+function galleryspin(sign) { 
+spinner = document.querySelector("#spinner");
+if (!sign) { angle = angle + 45; } else { angle = angle - 45; }
+spinner.setAttribute("style","-webkit-transform: rotateY("+ angle +"deg); -moz-transform: rotateY("+ angle +"deg); transform: rotateY("+ angle +"deg);");
+}
+    </script>
+
+</body>
+</html>
