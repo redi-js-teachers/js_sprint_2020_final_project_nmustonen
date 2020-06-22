@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niina Mustonen</title>
+    <link rel="stylesheet" href="styleportfolioJS2.css">
+</head>
+<body>
+    
+    <div class="main-container">
+        <img class="background" src="camera2.jpg">
+        <div class="h1-container">
+            <h1>
+                <a href="" class="typewrite" data-period="2000" data-type='[ "Niina Mustonen" ]'>
+                  <span class="wrap"></span>
+                </a>
+              </h1>
+        </div>
+        <div class="h2-container">
+          <h2>Photographer</h2>
+        </div>
+      <div class="portfolio-container">
+        <div class="p-container">
+          <p> 
+             EXPLORE - LEARN - CREATE <br>
+            Those three things inspire me in everyday life <br>
+             A day without those, will be a day wasted.
+        </p>
+        </div>
+
+        <!--- SECTION 1 --->
+    <div class="slider">
+        <div class="banner"><span>Niina Mustonen <br> Photography</span></div><!--end banner-->
+        <div class="btnLeft"></div><!--end btnLeft-->
+        <div class="btnRight"></div><!--end btnRight-->
+        <div class="info"></div><!--end info-->
+        <div class="hidden images">
+        <img src="horses.jpg">
+        <img src="catreflection.jpg">
+        <img src="austriaview.jpg">
+      </div><!--end hidden-->
+      </div><!--end slider-->
+
+
+        <!--- SECTION 2 --->
+    <div class="slider">
+            <div class="banner"><span>Niina Mustonen <br> Photography</span></div><!--end banner-->
+            <div class="btnLeft"></div><!--end btnLeft-->
+            <div class="btnRight"></div><!--end btnRight-->
+            <div class="info"></div><!--end info-->
+            <div class="hidden images">
+            <img src="eibseecabin.jpg">
+            <img src="feather.jpg">
+            <img src="field.jpg">
+          </div><!--end hidden-->
+          </div><!--end slider-->
+        
+
+
+          <!--- SECTION 3 --->
+          <div class="slider">
+            <div class="banner"><span>Niina Mustonen <br> Photography</span></div><!--end banner-->
+            <div class="btnLeft"></div><!--end btnLeft-->
+            <div class="btnRight"></div><!--end btnRight-->
+            <div class="info"></div><!--end info-->
+            <div class="hidden images">
+            <img src="autumncabin.jpg">
+            <img src="boatreflection.jpg">
+            <img src="contrastcabin.jpg">
+          </div><!--end hidden-->
+          </div><!--end slider-->
+        </div>
+    </div>
+          
+          
+        </div>
+        
+       
+        <script>
+
+            ///Typewriter text//
+            var TxtType = function(el, toRotate, period) {
+                this.toRotate = toRotate;
+                this.el = el;
+                this.loopNum = 0;
+                this.period = parseInt(period, 10) || 2000;
+                this.txt = '';
+                this.tick();
+                this.isDeleting = false;
+            };
+        
+            TxtType.prototype.tick = function() {
+                var i = this.loopNum % this.toRotate.length;
+                var fullTxt = this.toRotate[i];
+        
+                if (this.isDeleting) {
+                this.txt = fullTxt.substring(0, this.txt.length - 1);
+                } else {
+                this.txt = fullTxt.substring(0, this.txt.length + 1);
+                }
+        
+                this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+        
+                var that = this;
+                var delta = 200 - Math.random() * 100;
+        
+                if (this.isDeleting) { delta /= 2; }
+        
+                if (!this.isDeleting && this.txt === fullTxt) {
+                delta = this.period;
+                this.isDeleting = true;
+                } else if (this.isDeleting && this.txt === '') {
+                this.isDeleting = false;
+                this.loopNum++;
+                delta = 500;
+                }
+        
+                setTimeout(function() {
+                that.tick();
+                }, delta);
+            };
+        
+            window.onload = function() {
+                var elements = document.getElementsByClassName('typewrite');
+                for (var i=0; i<elements.length; i++) {
+                    var toRotate = elements[i].getAttribute('data-type');
+                    var period = elements[i].getAttribute('data-period');
+                    if (toRotate) {
+                      new TxtType(elements[i], JSON.parse(toRotate), period);
+                    }
+                }
+                // INJECT CSS
+                var css = document.createElement("style");
+                css.type = "text/css";
+                css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+                document.body.appendChild(css);
+            };
+        ///Typewriter text ends here//
+
+
+            //PHOTOGRAPHY SLIDERS//
+            // SECTION 1 Photos //
+               ;(function() {
+               
+               var slider = function() {
+                 //images for section 1 //
+                 var backImg = [];
+                 backImg[0] = "horses.jpg";
+                 backImg[1] = "catreflection.jpg";
+                 backImg[2] = "austriaview.jpg";
+                 
+                 var i = 0;
+                 var x = (backImg.length) - 1;
+                 var int = 3500;
+                 
+                 interval = setInterval(showNext, int); 
+                 
+                 var elements = {
+                   slider: document.querySelector('.slider'),
+                   btn: { 
+                     left: document.querySelector('.btnLeft'),
+                     right: document.querySelector('.btnRight')
+                   }
+                 }
+                 
+                 var startInterval = function() {
+                    interval = setInterval(showNext, int);
+                 }
+                 
+                 var stopInterval = function() {
+                   clearInterval(interval);
+                 }
+                 
+                 var attachEvents = function() {
+                   elements.btn.left.onclick = function() { showPrevious(); };
+                   elements.btn.right.onclick = function() {  showNext(); };
+                   elements.slider.addEventListener("mouseenter", stopInterval);
+                   elements.slider.addEventListener("mouseleave", startInterval);
+                 };
+                 
+                 var changeImg = function() {
+                   elements.slider.style.backgroundImage = 'url(' + backImg[i] + ')';
+                 }
+                 
+                 var initialize = (function() {
+                   attachEvents();
+                   changeImg(i);
+                 })();
+               
+                 var showPrevious = function() {
+                   (i <= 0) ? i = 3 : i--;
+                   changeImg(i);
+                 };
+               
+                 var showNext = function() {
+                   (i >= x) ? i = 0 : i++;
+                   changeImg(i);
+                 };
+               
+               };
+               
+               slider();
+               
+               })();
+           
+               // SECTION 2 //*
+               ;(function() {
+               
+               var slider = function() {
+                 //images for section 2 //*
+                 var backImg = [];
+                 backImg[4] = "eibseecabin.jpg";
+                 backImg[5] = "feather.jpg";
+                 backImg[6] = "field.jpg";
+                 
+                 var i = 0;
+                 var x = (backImg.length) - 1;
+                 var int = 3500;
+                 
+                 interval = setInterval(showNext, int); // 
+                 
+                 var elements = {
+                   slider: document.querySelector('.slider'),
+                   btn: { 
+                     left: document.querySelector('.btnLeft'),
+                     right: document.querySelector('.btnRight')
+                   }
+                 }
+                 
+                 var startInterval = function() {
+                    interval = setInterval(showNext, int);
+                 }
+                 
+                 var stopInterval = function() {
+                   clearInterval(interval);
+                 }
+                 
+                 var attachEvents = function() {
+                   elements.btn.left.onclick = function() { showPrevious(); };
+                   elements.btn.right.onclick = function() {  showNext(); };
+                   elements.slider.addEventListener("mouseenter", stopInterval);
+                   elements.slider.addEventListener("mouseleave", startInterval);
+                 };
+                 
+                 var changeImg = function() {
+                   elements.slider.style.backgroundImage = 'url(' + backImg[i] + ')';
+                 }
+                 
+                 var initialize = (function() {
+                   attachEvents();
+                   changeImg(i);
+                 })();
+               
+                 var showPrevious = function() {
+                   (i <= 0) ? i = 3 : i--;
+                   changeImg(i);
+                 };
+               
+                 var showNext = function() {
+                   (i >= x) ? i = 0 : i++;
+                   changeImg(i);
+                 };
+               
+               };
+               
+               slider();
+               
+               })();
+           
+           
+           // SECTION 3 //*
+           ;(function() {
+               
+               var slider = function() {
+                 //images for section 3 //*
+                 var backImg = [];
+                 backImg[7] = "autumncabin.jpg";
+                 backImg[8] = "boatreflection.jpg";
+                 backImg[9] = "constrastcabin.jpg";
+                 
+                 var i = 0;
+                 var x = (backImg.length) - 1;
+                 var int = 3500;
+                 
+                 interval = setInterval(showNext, int); // 
+                 
+                 var elements = {
+                   slider: document.querySelector('.slider'),
+                   btn: { 
+                     left: document.querySelector('.btnLeft'),
+                     right: document.querySelector('.btnRight')
+                   }
+                 }
+                 
+                 var startInterval = function() {
+                    interval = setInterval(showNext, int);
+                 }
+                 
+                 var stopInterval = function() {
+                   clearInterval(interval);
+                 }
+                 
+                 var attachEvents = function() {
+                   elements.btn.left.onclick = function() { showPrevious(); };
+                   elements.btn.right.onclick = function() {  showNext(); };
+                   elements.slider.addEventListener("mouseenter", stopInterval);
+                   elements.slider.addEventListener("mouseleave", startInterval);
+                 };
+                 
+                 var changeImg = function() {
+                   elements.slider.style.backgroundImage = 'url(' + backImg[i] + ')';
+                 }
+                 
+                 var initialize = (function() {
+                   attachEvents();
+                   changeImg(i);
+                 })();
+               
+                 var showPrevious = function() {
+                   (i <= 0) ? i = 3 : i--;
+                   changeImg(i);
+                 };
+               
+                 var showNext = function() {
+                   (i >= x) ? i = 0 : i++;
+                   changeImg(i);
+                 };
+               
+               };
+               
+               slider();
+               
+               })();
+           
+           
+               </script>
+
+
+<!---UP function button -->
+<button onclick="topFunction()" id="myBtn" title="Take me back UP!"> UP!</button>
+  
+  <script>
+  //Get the button
+  var mybutton = document.getElementById("myBtn");
+  
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function() {scrollFunction()};
+  
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+  
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+  </script>
+
+
+    </body>
+  <!---UP function button -->
+</div>
+<!-- footer section -->
+<div class="footer">
+      <p>Copyright Niina Mustonen</p>
+</div>
+    
+</html>
+
+
+<!--       _
+       .__(.)< (DUCKIE DUCK)
+        \___)   
+ ~~~~~~~~~~~~~~~~~~-->
+
+ 
+
+
+</html>
